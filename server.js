@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const cors = require('cors')
+const rootRouter = require('./routes/root')
 const studentsRouter = require('./routes/students')
 require('dotenv').config()
 
@@ -13,6 +14,7 @@ app.use(cors())
 app.use(bodyParser.json())
 
 // Routes
+app.use('/', rootRouter)
 app.use('/students', studentsRouter)
 
 app.listen(PORT, () => {
